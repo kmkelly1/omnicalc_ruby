@@ -10,14 +10,26 @@ class CalculationsController < ApplicationController
     # The special word the user input is in the string @special_word.
     # ================================================================================
 
+    @character_count_with_spaces = @text.length
 
     @word_count = @text.split.count
+    
+    @atext = @text.gsub(/[^a-z0-9\s]/i, "")
+    
+    @character_count_without_spaces = @atext.length
+    
+    @special_word_count = []
+    
+    @text.split.each do |word|
+      if word == @special_word
+        @special_word_count.push(word)
+        
+      end
+    end
+    
+ 
 
-    @character_count_with_spaces = "Replace this string with your answer."
-
-    @character_count_without_spaces = "Replace this string with your answer."
-
-    @occurrences = "Replace this string with your answer."
+    @occurrences = @special_word_count.length
 
     # ================================================================================
     # Your code goes above.

@@ -49,8 +49,17 @@ class CalculationsController < ApplicationController
     # The number of years the user input is in the integer @years.
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
+    
+    @number_of_payments = @years * 12
+    @number_of_payments.to_f
+    @monthly_interest_rate = (@apr/100) / 12
+    @one_plus_monthly = @monthly_interest_rate + 1
+    @monthly_number_of_payments = @one_plus_monthly**@number_of_payments
+    @numerator = @monthly_number_of_payments * @monthly_interest_rate
+    @divisor = @monthly_number_of_payments- 1
+  
+    @monthly_payment = @principal * ( @numerator / @divisor)
 
-    @monthly_payment = "Replace this string with your answer."
 
     # ================================================================================
     # Your code goes above.
@@ -72,12 +81,14 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    
+    
+    @seconds = @ending - @starting
+    @minutes = @seconds / 60
+    @hours = @minutes / 60
+    @days = @hours / 24
+    @weeks = @days / 7
+    @years = @weeks / 52
 
     # ================================================================================
     # Your code goes above.

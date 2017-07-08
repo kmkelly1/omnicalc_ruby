@@ -117,6 +117,7 @@ class CalculationsController < ApplicationController
     
     @median_temp= [ ]
     @median_calculate= [ ]
+    # @median_mean = fixnum
     
     if @count%2 == 1
       @count.to_i
@@ -125,10 +126,11 @@ class CalculationsController < ApplicationController
     else
       @count.to_i
       @median_location_1= (@count / 2)
-      @median_location_2= (@count / 2) + 1
+      @median_location_2= (@count / 2) - 1
       @median_calculate.push(@sorted_numbers[@median_location_1])
       @median_calculate.push(@sorted_numbers[@median_location_2])
-      @median_temp.push(@median_calculate.mean)
+      @median_mean = @median_calculate.sum / 2
+      @median_temp.push(@median_mean)
       
       
     end

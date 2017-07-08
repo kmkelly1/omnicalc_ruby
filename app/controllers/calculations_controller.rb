@@ -114,8 +114,26 @@ class CalculationsController < ApplicationController
     @maximum = @numbers.max
 
     @range = @maximum - @minimum
+    
+    @median_temp= [ ]
+    @median_calculate= [ ]
+    
+    if @count%2 == 1
+      @count.to_i
+      @median_location = (@count / 2)
+      @median_temp.push(@sorted_numbers[@median_location])
+    else
+      @count.to_i
+      @median_location_1= (@count / 2)
+      @median_location_2= (@count / 2) + 1
+      @median_calculate.push(@sorted_numbers[@median_location_1])
+      @median_calculate.push(@sorted_numbers[@median_location_2])
+      @median_temp.push(@median_calculate.mean)
+      
+      
+    end
 
-    @median = "Replace this string with your answer."
+    @median = @median_temp.to_s
 
     @sum = @numbers.sum
 

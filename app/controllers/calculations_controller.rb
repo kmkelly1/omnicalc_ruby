@@ -21,7 +21,11 @@ class CalculationsController < ApplicationController
     
     @special_word_count = []
     
-    @text.split.each do |word|
+    @btext = @text.downcase
+    
+    @aspecial_word= @special_word.downcase
+    
+    @btext.split.each do |word|
       if word == @special_word
         @special_word_count.push(word)
         

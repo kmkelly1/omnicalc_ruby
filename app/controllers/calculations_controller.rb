@@ -14,7 +14,8 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count
     
-    @atext = @text.gsub(/[^a-z0-9\s]/i, "")
+    @atext = @text.gsub(/\s+/, "")
+    
     
     @character_count_without_spaces = @atext.length
     

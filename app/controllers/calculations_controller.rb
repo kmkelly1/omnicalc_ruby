@@ -157,9 +157,24 @@ class CalculationsController < ApplicationController
 
     @variance = @sum_squares.sum / @sum_squares.count
 
-    @standard_deviation = "Replace this string with your answer."
-
-    @mode = "Replace this string with your answer."
+    @standard_deviation = Math.sqrt(@variance)
+    
+    # @totals=[]
+    
+    # @numbers.each do |num|
+    #     @count = []
+    #       @numbers.each do |num2|
+    #         if num2 == num
+    #           @count.push(1)
+          
+    #         end
+    #       end
+    #   @totals.push(@count)
+    # end
+    # @position = @totals.max
+    # @position = @position.to_fixnum
+    
+    @mode = "Replace this string with your answer"
 
     # ================================================================================
     # Your code goes above.

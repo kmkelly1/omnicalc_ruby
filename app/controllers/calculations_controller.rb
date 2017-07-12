@@ -21,7 +21,7 @@ class CalculationsController < ApplicationController
     
     @special_word_count = []
     
-    @btext = @text.downcase
+    @btext = @text.downcase.gsub(/[^a-z0-9\s]/i,"")
     
     @aspecial_word= @special_word.downcase
     
